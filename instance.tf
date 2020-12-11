@@ -1,5 +1,4 @@
 resource "aws_instance" "splunk" {
-  ami                    = lookup(var.amis, var.region)
   subnet_id              = var.subnet
   instance_type          = var.instanceType
   vpc_security_group_ids = [aws_security_group.splunk_enterprise.id]
@@ -9,5 +8,9 @@ resource "aws_instance" "splunk" {
   }
   volume_tags = {
     Name = var.instanceName
+  }
+  amis {
+    default = {
+      "ap-southeast-2" = "ami-085265c078d86c75b"
   }
 }
