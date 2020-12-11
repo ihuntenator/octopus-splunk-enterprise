@@ -4,7 +4,6 @@ resource "aws_default_vpc" "default" {
 resource "aws_security_group" "splunk_enterprise" {
   name        = "splunk"
   description = "Allow SSH and HTTPS"
-  vpc_id      = aws_default_vpc.default.id
 
   ingress {
     from_port   = 22
