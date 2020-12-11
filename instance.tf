@@ -1,13 +1,14 @@
 resource "aws_instance" "splunk" {
-  subnet_id              = var.subnet
-  instance_type          = var.instanceType
+  subnet_id              = "subnet-74539012"
+  availabilityZone       = "ap-southeast-2a"
+  instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.splunk_enterprise.id]
 
   tags = {
-    Name = var.instanceName
+    Name = "splunk"
   }
   volume_tags = {
-    Name = var.instanceName
+    Name = "splunk"
   }
   amis {
     default = {
